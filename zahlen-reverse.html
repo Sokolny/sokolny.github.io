@@ -1,0 +1,51 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>Wie viele Finger zeigst du?</p>
+	<input id="anyNumber" placeholder="Deine Zahl!"/>
+	<button id="guess">Rate mal!</button>
+	<script>
+
+		
+
+
+		document.getElementById("guess").onclick=function() {
+
+					var number=document.getElementById("anyNumber").value
+
+					var habs=false;
+
+					var guesses=1;
+
+					var x;
+
+				while (habs==false) {
+
+					x=Math.random();
+
+					x=x*6;
+
+					x=Math.floor(x);
+
+					if (number==x) {
+
+					habs=true;
+						
+					} else {
+
+						guesses++
+					}
+
+			}
+
+			alert ("Ich hab's! Es ist "+x+". Ich habe "+guesses+" Versuche gebraucht.")
+		}
+
+
+	</script>
+
+
+</body>
+</html>

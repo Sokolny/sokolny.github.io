@@ -6,41 +6,13 @@
 </head>
 
 <body>
-<h1>Was ist die Hauptstadt von Esthi-Land?</h1>
-<form>
-<input type="radio" name="town" value="herne" id="herne">
-<label for="herne">Herne</label><br>
-<input type="radio" name="town" value="Timbuktu" id="timbuktu">
-<label for="timbuktu">Timbuktu</label><br>
-<input type="radio" name="town" value="Bielefeld" id="bielefeld">
-<label for="bielefeld">Bielefeld</label><br><br>
-</form>
-<button id="sumbit">Antworten</button>
-<p id="result"></p>
-
-<script>
-
-document.getElementById("sumbit").onclick=function() {
-
-	if (document.getElementById("herne").checked) {
-
-		document.getElementById("result").innerHTML="Das ist richtig.";
-	} 
-
-	else if (document.getElementById("timbuktu").checked) {
-
-		document.getElementById("result").innerHTML="Nein, Erdkunde 6. Setzen.";
-	} 
-
-	else if (document.getElementById("bielefeld").checked) {
-
-		document.getElementById("result").innerHTML="Haha reingefallen. Bielefeld gibt es gar nicht.";
-	}  else {
-
-				alert("Nichts ausgewählt.")
-			}
-}
-</script>
+<h1>Was willst du machen?</h1>
+<button><a href="/quiz.html" title="Zum Quiz">Qiuz</a></button>
+<button><a href="/taschenrechner.html" title="Zum Taschenrechner">Taschenrechner</a></button>
+<button><a href="/spiel-obst.html" title="Obst raten">Obst Spiel</a></button>
+<button><a href="/spiel-zahlen.html" title="Zum Zahlen Spiel">Zahlen raten</a></button>
+<button><a href="/zahlen-reverse.html" title="Wieviele Finger zeige ich?">Finger zeigen</a></button>
+<button><a href="/test.html" title="Wie schnell bin ich?">Viereck klicken</a></button>
 </body>
 
 </html>

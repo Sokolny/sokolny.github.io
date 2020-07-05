@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>Wie viele Finger zeige ich?</p>
+	<input id="answer" type="text" placeholder="Guess!"/>
+	<button id="changeText">Submit</button>
+	<script>
+
+		var givenAnswer=document.getElementById("answer").value
+
+		var x=Math.random();
+
+		x=11*x;
+
+		x=Math.floor(x);
+
+		document.getElementById("changeText").onclick=function() {
+
+			givenAnswer = document.getElementById("answer").value
+ 		
+ 			if(givenAnswer==x) {
+ 				alert ("Du bist ein Fuchs!")
+ 			} else if(givenAnswer>x) {
+ 				alert ("Zu hoch!")
+ 			} else {
+ 				alert ("Zu tief!")
+ 			}
+
+		}
+
+		console.log(x)
+
+
+	</script>
+
+
+</body>
+</html>

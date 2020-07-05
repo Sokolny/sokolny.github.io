@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>Welches Obst mag ich am liebsten?</p>
+	<input id="answer" type="text" placeholder="Rate mal!"/>
+	<button id="changeText">Submit</button>
+	<script>
+
+		var givenAnswer=document.getElementById("answer").value
+
+		var myArray=["Apfel","Banane","Kirsche","Mango","Ananas","Kiwi"]
+
+		var x=Math.random()
+
+		x=6*x
+
+		x=Math.floor(x)
+
+		var obst=myArray[x]
+
+		document.getElementById("changeText").onclick=function() {
+
+			givenAnswer = document.getElementById("answer").value
+ 		
+ 			if(givenAnswer==obst) {
+ 				alert ("Du bist ein Fuchs!")
+ 			} else {
+ 				alert ("Nope. Ich mag lieber" +" " +obst +".")
+ 			}
+
+		}
+
+		console.log(x + obst)
+
+
+	</script>
+
+
+</body>
+</html>

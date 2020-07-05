@@ -1,0 +1,67 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div  style="height: 50px; width: 50px;">
+	<div id="box" style="height: 50px; width: 50px; background-color: black; display: none;"></div>
+	</div>
+	<p>Deine Zeit: <span id="result"></span></p>
+
+	<script>
+
+		var clickedTime; var createdTime; var timeDiff;
+
+		function getRandomColor () {
+
+			var letters= '0123456789ABCDEF'.split('');
+			var color='#';
+			for (var i = 0; i < 6; i++) {
+
+			color += letters[Math.round(Math.random() * 15)];
+			}
+
+			return color;
+		}
+
+		function makeBox() {
+
+			createdTime= Date.now();
+
+			var zeit= Math.random();
+
+			zeit= zeit*4000;
+
+			setTimeout(function() {
+
+			document.getElementById("box").style.backgroundColor=getRandomColor();
+
+			document.getElementById("box").style.display="block";
+
+
+		}, zeit);
+		}
+
+
+		document.getElementById("box").onclick=function() {
+
+			clickedTime=Date.now();
+
+			timeDiff= (clickedTime-createdTime)/10000;
+
+			document.getElementById("result").innerHTML=timeDiff;
+
+			document.getElementById("box").style.display="none";
+
+			makeBox();
+
+		}
+
+		makeBox();
+
+
+	</script>
+
+
+</body>
+</html>

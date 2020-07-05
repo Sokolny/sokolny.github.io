@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>Taschenrechner</p>
+	<div><input id="firstNumber" type="number"/> <select id="selection"><option></option><option value="+">+</option><option value="-">-</option></option></select> <input id="secondNumber" type="number"/> <button id="button">Ergebnis</button></div>
+	
+	<p id="ergebnis"></p>
+
+	<script>
+		var eins= +document.getElementById("firstNumber").value;
+		var zwei= +document.getElementById("secondNumber").value;
+
+
+		function plus(a, b) {
+
+			return (a+b)
+		}
+
+		function minus(a, b) {
+
+			return (a-b)
+		}
+
+		document.getElementById("button").onclick=function() {
+
+
+			if (document.getElementById("selection").value=="+") {		
+
+					eins= +document.getElementById("firstNumber").value;
+					zwei= +document.getElementById("secondNumber").value;
+
+				document.getElementById("ergebnis").innerHTML="Das ergibt "+plus(eins, zwei)+".";
+			}
+
+			else if (document.getElementById("selection").value=="-") {
+
+					eins= +document.getElementById("firstNumber").value;
+					zwei= +document.getElementById("secondNumber").value;
+
+				document.getElementById("ergebnis").innerHTML="Das ergibt "+minus(eins, zwei)+".";
+			} else {
+
+				alert("Wähle Rechenart!")
+			}
+
+		}
+
+	</script>
+
+
+</body>
+</html>
