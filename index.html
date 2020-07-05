@@ -1,11 +1,46 @@
 <html>
 <head>
 <meta name="robots" content="noindex" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>JavaScript lernen</title>
 </head>
 
 <body>
-<p>Hallo</p>
+<h1>Was ist die Hauptstadt von Esthi-Land?</h1>
+<form>
+<input type="radio" name="town" value="herne" id="herne">
+<label for="herne">Herne</label><br>
+<input type="radio" name="town" value="Timbuktu" id="timbuktu">
+<label for="timbuktu">Timbuktu</label><br>
+<input type="radio" name="town" value="Bielefeld" id="bielefeld">
+<label for="bielefeld">Bielefeld</label><br><br>
+</form>
+<button id="sumbit">Antworten</button>
+<p id="result"></p>
+
+<script>
+
+document.getElementById("sumbit").onclick=function() {
+
+	if (document.getElementById("herne").checked) {
+
+		document.getElementById("result").innerHTML="Das ist richtig.";
+	} 
+
+	else if (document.getElementById("timbuktu").checked) {
+
+		document.getElementById("result").innerHTML="Nein, Erdkunde 6. Setzen.";
+	} 
+
+	else if (document.getElementById("bielefeld").checked) {
+
+		document.getElementById("result").innerHTML="Haha reingefallen. Bielefeld gibt es gar nicht.";
+	}  else {
+
+				alert("Nichts ausgewählt.")
+			}
+}
+</script>
 </body>
 
 </html>
