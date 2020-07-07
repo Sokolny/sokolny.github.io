@@ -15,24 +15,23 @@
 <input type="radio" name="quiz" id="answer3" class="answer">
 <label for="answer3" id="label3" class="label"></label><br><br>
 </form>
-<button id="sumbit">Antworten</button>
+<button id="sumbit">Antworten</button><br><br>
+<button id="next" onclick="getQuestion()">Nächste Frage</button>
 <p id="result"></p>
 
 <script>
 
 
-// Zufälligkeit
+// Fragenkataglog
+
+var fragenkatalog = [{frage:"Was ist die Hauptstadt von Frankreich?", antwort: ["Herne", "Timbuktu", "Paris"], correctAnswer: "Paris"}, {frage:"Was kann Präsident Trump nicht?", antwort: ["Rechnen", "Joggen", "Beides trifft zu."], correctAnswer: "Beides trifft zu."}];
 
 var x=Math.random()
 
-	x=2*x
+x=fragenkatalog.length*x
 
-	x=Math.floor(x)
+x=Math.floor(x)
 
-
-// Fragenkataglog
-
-var fragenkatalog = [{frage:"Was ist die Hauptstadt von Esthi-Land?", antwort: ["Herne", "Timbuktu", "Bielefeld"], correctAnswer: "Herne"}, {frage:"Was kann Präsident Trump nicht?", antwort: ["Rechnen", "Joggen", "Beides trifft zu."], correctAnswer: "Beides trifft zu."}];
 
 function getQuestion () {
 
@@ -40,8 +39,8 @@ function getQuestion () {
 	document.getElementById("label1").innerHTML=fragenkatalog[x].antwort[0];
 	document.getElementById("label2").innerHTML=fragenkatalog[x].antwort[1];
 	document.getElementById("label3").innerHTML=fragenkatalog[x].antwort[2];
-}
 
+}
 
 
 getQuestion ()
