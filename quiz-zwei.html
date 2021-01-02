@@ -1,0 +1,160 @@
+<html>
+<head>
+<meta name="robots" content="noindex" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<title>Quiz</title>
+</head>
+
+<body>
+<h1>Quiz</h1>
+<p>Beantworte die Fragen wenn du kannst.</p>
+
+<div id="box"><button id="sumbit">Antworten</button>
+</div>
+
+
+<script>
+
+
+// Fragenkataglog
+
+var fragenkatalog = [
+	{	
+		frage:"Was ist die Hauptstadt von Frankreich?", 
+		antwort: ["Herne", "Timbuktu", "Paris"], 
+		correctAnswer: "Paris"
+	}, {
+		frage:"Was kann Präsident Trump nicht?", 
+		antwort: ["Rechnen", "Joggen", "Beides trifft zu."], 
+		correctAnswer: "Beides trifft zu."
+	}
+	, {
+		frage:"Wie heißt keine Schwester von Alex?", 
+		antwort: ["Luise", "Annabelle", "Theresa"], 
+		correctAnswer: "Annabelle"
+	}
+];
+
+
+
+function getQuestion () {
+
+	var i;
+
+	for (i=0; i < fragenkatalog.length; i++) {
+
+		var newElement = document.createElement("div");
+
+		newElement.setAttribute("class", "frame");
+
+			var newQuestion = document.createElement("h2");
+
+			newQuestion.setAttribute("id", "question"+i);
+
+			var questionText = document.createTextNode(fragenkatalog[i].frage);
+
+			newQuestion.appendChild(questionText);
+
+			newElement.appendChild(newQuestion)
+
+
+			var newForm = document.createElement("form");
+
+			newElement.appendChild(newForm);
+
+			var j;
+
+			for (j=0; j < 3; j++) {
+
+				var newRadio = document.createElement("input");
+
+				newRadio.setAttribute("type", "radio");
+				newRadio.setAttribute("name", "quiz");
+				newRadio.setAttribute("class", "answer"+i);
+				newRadio.setAttribute("id", "answer"+i+j);
+
+				newForm.appendChild(newRadio);
+
+
+				var newLabel = document.createElement("label");
+
+				newLabel.setAttribute("for", "answer");
+				newLabel.setAttribute("class", "label"+i);
+				newLabel.setAttribute("id", "label"+i+j);
+
+				var answerText = document.createTextNode(fragenkatalog[i].antwort[j]);
+
+				newLabel.appendChild(answerText);
+
+				newForm.appendChild(newLabel);
+
+				var newBreak = document.createElement("br");
+
+				newForm.appendChild(newBreak);
+
+			}
+
+
+		document.body.insertBefore(newElement, document.getElementById("box"));
+
+	}
+	
+
+}
+
+getQuestion ()
+
+
+// Richtige Antwort
+
+
+document.getElementById("sumbit").onclick=function() {
+
+	var i;
+	var j;
+
+
+	for (i=0; i < fragenkatalog.length; i++) {
+
+		var pickRadio = document.getElementsByClassName("answer"+i);
+		var pickLabel = document.getElementsByClassName("label"+i);
+
+		for (j=0; j < pickRadio.length; j++) {
+
+		document.getElementById(pickLabel[j].id).style.backgroundColor="#33B3FF";
+		document.getElementById(pickLabel[j].id).style.color="black";
+
+		}
+
+	}
+
+	for (i=0; i < fragenkatalog.length; i++) {
+
+		var pickRadio = document.getElementsByClassName("answer"+i);
+		var pickLabel = document.getElementsByClassName("label"+i);
+
+		for (j=0; j < pickRadio.length; j++) {
+
+
+			if (pickRadio[j].checked && pickLabel[j].innerHTML==fragenkatalog[i].correctAnswer) {
+
+				document.getElementById(pickLabel[j].id).style.backgroundColor="green";
+				document.getElementById(pickLabel[j].id).style.color="white";
+			}
+
+			if (pickRadio[j].checked && pickLabel[j].innerHTML!=fragenkatalog[i].correctAnswer) {
+
+				document.getElementById(pickLabel[j].id).style.backgroundColor="red";
+				document.getElementById(pickLabel[j].id).style.color="white";
+			}
+
+		}
+	}
+}
+
+
+</script>
+</body>
+
+</html>
