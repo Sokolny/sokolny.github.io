@@ -5,26 +5,22 @@
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <title>Quiz</title>
 </head>
-
 <body>
-<div class="frame">
-	<h1 id="question"></h1>
-	<form>
-	<input type="radio" name="quiz" id="answer1" class="answer">
-	<label for="answer1" id="label1" class="label"></label><br>
-	<input type="radio" name="quiz" id="answer2" class="answer">
-	<label for="answer2" id="label2" class="label"></label><br>
-	<input type="radio" name="quiz" id="answer3" class="answer">
-	<label for="answer3" id="label3" class="label"></label><br><br>
-	</form>
-	<button id="sumbit">Antworten</button><br><br>
-	<button id="next" onclick="location.reload();">Nächste Frage</button>
-	<p id="result"></p>
-</div>
+
+<h1 id="question"></h1>
+<form>
+<input type="radio" name="quiz" id="answer1" class="answer">
+<label for="answer1" id="label1" class="label"></label><br>
+<input type="radio" name="quiz" id="answer2" class="answer">
+<label for="answer2" id="label2" class="label"></label><br>
+<input type="radio" name="quiz" id="answer3" class="answer">
+<label for="answer3" id="label3" class="label"></label><br><br>
+</form>
+<button id="sumbit">Antworten</button><br><br>
+<button id="next" onclick="getQuestion()">Nächste Frage</button>
+<p id="result"></p>
 
 <script>
-
-
 // Fragenkataglog
 
 var fragenkatalog = [
@@ -40,60 +36,58 @@ var fragenkatalog = [
 ];
 
 var x=Math.random()
-
-x=fragenkatalog.length*x
-
-x=Math.floor(x)
-
-
+x = fragenkatalog.length*x
+x = Math.floor(x)
 function getQuestion () {
-
+	x = getNonRepeatingQuestion(x);
 	document.getElementById("question").innerHTML=fragenkatalog[x].frage;
 	document.getElementById("label1").innerHTML=fragenkatalog[x].antwort[0];
 	document.getElementById("label2").innerHTML=fragenkatalog[x].antwort[1];
 	document.getElementById("label3").innerHTML=fragenkatalog[x].antwort[2];
-
+	resetQuestion();
 }
-
-
+function getNonRepeatingQuestion(current) {
+	let newX = current
+	while (newX == current) {
+		newX = Math.random()
+		newX = fragenkatalog.length * x
+		newX = Math.floor(x)
+	}
+	return newX;
+}
+function resetQuestion () {
+	let answers = document.getElementsByClassName("answer");
+	for (i = 0; i < answers.length; i++) {
+		answers[i].checked = false;
+	}
+	let labels = document.getElementsByClassName("label");
+		for (i = 0; i < labels.length; i++) {
+		labels[i].style.backgroundColor = "white";
+		labels[i].style.color = "black";
+	}
+}
 getQuestion ()
-
 // Richtige Antwort
-
 var pickRadio = document.getElementsByClassName("answer");
 var pickLabel = document.getElementsByClassName("label");
-
-
 document.getElementById("sumbit").onclick=function() {
-
 	var i;
-
 	for (i=0; i < pickRadio.length; i++) {
 
 		document.getElementById(pickLabel[i].id).style.backgroundColor="#33B3FF";
 		document.getElementById(pickLabel[i].id).style.color="black";
-
 	}
-
 	for (i=0; i < pickRadio.length; i++) {
-
 		if (pickRadio[i].checked && pickLabel[i].innerHTML==fragenkatalog[x].correctAnswer) {
-
 			document.getElementById(pickLabel[i].id).style.backgroundColor="green";
 			document.getElementById(pickLabel[i].id).style.color="white";
 		}
-
 		if (pickRadio[i].checked && pickLabel[i].innerHTML!=fragenkatalog[x].correctAnswer) {
-
 			document.getElementById(pickLabel[i].id).style.backgroundColor="red";
 			document.getElementById(pickLabel[i].id).style.color="white";
 		}
-
 	}
 }
-
-
 </script>
 </body>
-
 </html>
