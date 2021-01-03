@@ -3,15 +3,27 @@
 <meta name="robots" content="noindex" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="style.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+$(function(){
+  $("#header").load("header.html"); 
+});
+</script>
 <title>Quiz</title>
 </head>
 
-<body>
-<h1>Quiz</h1>
-<p>Beantworte die Fragen wenn du kannst.</p>
+<body class="page">
 
-<div id="box"><button id="sumbit">Antworten</button>
-</div>
+<div id="header"></div>
+
+	<h1>Quiz</h1>
+	<p>Beantworte die Fragen wenn du kannst.</p>
+
+	<div id="box"><button id="sumbit">Antworten</button>
+	</div>
+
+	<div style="height:500px;"></div>
+
 
 
 <script>
@@ -28,8 +40,7 @@ var fragenkatalog = [
 		frage:"Was kann Präsident Trump nicht?", 
 		antwort: ["Rechnen", "Joggen", "Beides trifft zu."], 
 		correctAnswer: "Beides trifft zu."
-	}
-	, {
+	}, {
 		frage:"Wie heißt keine Schwester von Alex?", 
 		antwort: ["Luise", "Annabelle", "Theresa"], 
 		correctAnswer: "Annabelle"
