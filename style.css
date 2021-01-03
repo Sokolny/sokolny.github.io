@@ -1,5 +1,8 @@
 .page {
 	margin: 5px;
+	width: 80%;
+	margin: auto;
+	background-color: #EAECEE;
 }
 
  /* Style the navbar */
@@ -31,8 +34,23 @@
   padding-top: 60px;
 } 
 
-.frame {
+
+.image {
+	width: 100%;
+	border-radius: 20px;
+
+}
+
+.frame-question {
 	background-color: #33B3FF;
+	border: solid 2px ;
+	border-radius: 20px;
+	padding: 0px 30px 20px;
+	margin: 5px 0px;
+}
+
+.frame-text {
+	background-color: white;
 	border: solid 2px ;
 	border-radius: 20px;
 	padding: 0px 30px 20px;
