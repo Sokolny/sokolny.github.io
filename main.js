@@ -1,38 +1,3 @@
-<html>
-<head>
-<meta name="robots" content="noindex" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="style.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script> 
-$(function(){
-  $("#header").load("header.html"); 
-});
-</script>
-<title>Quiz</title>
-</head>
-
-<body class="page">
-
-<div>
-	<img class="image" src="header.jpg"/>
-<div id="header"></div>
-</div>
-	<div class="frame-text">
-	<h1>Quiz für Alex</h1>
-	<p>Beantworte die Fragen wenn du kannst.</p>
-	</div>
-
-	<div id="box"><button id="sumbit">Antworten</button>
-	</div>
-
-	<div style="height:500px;"></div>
-
-
-
-<script>
-
-
 // Fragenkataglog
 
 var fragenkatalog = [
@@ -189,13 +154,3 @@ document.getElementById("sumbit").onclick=function() {
 		}
 	}
 }
-
-
-
-
-
-</script>
-</body>
-
-</html>
-
