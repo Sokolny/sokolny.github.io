@@ -26,7 +26,7 @@ $(function(){
 	<div id="box"><button id="sumbit">Antworten</button>
 	</div>
 
-	<div style="height:500px;"></div>
+	<div id="space" style="height:500px;"></div>
 
 
 
@@ -37,17 +37,45 @@ $(function(){
 
 var fragenkatalog = [
 	{	
-		frage:"Was ist die Hauptstadt von Frankreich?", 
-		antwort: ["Herne", "Timbuktu", "Paris", "Gorsleben"], 
-		correctAnswer: "Paris"
+		frage:"Wo haben wir unser eigenes Eis erschaffen?", 
+		antwort: ["Neapel", "Omiš", "Tromsø", "Wien"], 
+		correctAnswer: "Omiš"
+	}, {
+		frage:"Wen kennt Esthi am längsten?", 
+		antwort: ["Annabelle", "Anika", "Kira", "Yasmin"], 
+		correctAnswer: "Anika"
+	}, {
+		frage:"Wie heißt kein Kuscheltier von Esthi?", 
+		antwort: ["Pepi", "Fridolin", "Tabsi", "Seppel"], 
+		correctAnswer: "Seppel"
+	}, {
+		frage:"Wo war Esthi noch nie?", 
+		antwort: ["Graz", "Krakau", "Rotterdam", "Marseille"], 
+		correctAnswer: "Graz"
+	}, {
+		frage:"Worüber hat Esthi ihre Masterarbeit geschrieben?", 
+		antwort: ["Werbung auf Instagram", "Zielgruppen auf Facebook", "Targeting auf YouTube", "Jobsuche auf LinkedIn"], 
+		correctAnswer: "Zielgruppen auf Facebook"
+	}, {
+		frage:"Wann ist unser Jahrestag?", 
+		antwort: ["22.11.", "02.12.", "12.12.", "22.12."], 
+		correctAnswer: "12.12."
+	}, {
+		frage:"Mit wem war Esthi nicht in einer Klasse (5.-10.)?", 
+		antwort: ["Hannah", "Yasmin", "Clara", "Annabelle"], 
+		correctAnswer: "Hannah"
 	}, {
 		frage:"Oko was?", 
 		antwort: ["Nagan", "Lama", "Bogee", "Lahoma"], 
 		correctAnswer: "Bogee"
 	}, {
-		frage:"Wie heißt eine Schwester von Alex?", 
-		antwort: ["Elisa", "Annabelle", "Marie", "Theresa"], 
-		correctAnswer: "Theresa"
+		frage:"Woher kommt der Name Sokolny?", 
+		antwort: ["Aus einem Buch", "Aus einem Spiel", "Aus einem Film", "Aus einer Serie"], 
+		correctAnswer: "Aus einem Buch"
+	}, {
+		frage:"Was sind Esthis Lieblingsaffen?", 
+		antwort: ["Nasenaffen", "Schimpansen", "Berggorillas", "Bonobos"], 
+		correctAnswer: "Berggorillas"
 	}
 ];
 
@@ -71,7 +99,7 @@ function getQuestion () {
 
 			newQuestion.appendChild(questionText);
 
-			newElement.appendChild(newQuestion)
+			newElement.appendChild(newQuestion);
 
 
 			var newForm = document.createElement("form");
@@ -129,7 +157,8 @@ document.getElementById("sumbit").onclick=function() {
 	var i;
 	var j;
 
-	var counter = 0
+	var counterButton = 0;
+	var counterAnswer = 0;
 
 	for(i=0; i< fragenkatalog.length; i++) {
 
@@ -138,13 +167,13 @@ document.getElementById("sumbit").onclick=function() {
 		for (j=0; j < buttonCheck.length; j++) {
 
 			if (buttonCheck[j].checked)
-				counter++;		
+				counterButton++;		
 		}
 
 
 	}
 
-	if (counter!=fragenkatalog.length) {
+	if (counterButton!=fragenkatalog.length) {
 		alert("Da hast du wohl eine Frage übersehen! Erst wenn du alles beantwortet hast, geht es weiter.")
 	}
 
@@ -161,9 +190,9 @@ document.getElementById("sumbit").onclick=function() {
 			document.getElementById(pickLabel[j].id).style.backgroundColor="#33B3FF";
 			document.getElementById(pickLabel[j].id).style.color="black";
 
-			}
+				}
 
-		}
+			}
 
 		for (i=0; i < fragenkatalog.length; i++) {
 
@@ -177,6 +206,7 @@ document.getElementById("sumbit").onclick=function() {
 
 					document.getElementById(pickLabel[j].id).style.backgroundColor="green";
 					document.getElementById(pickLabel[j].id).style.color="white";
+					counterAnswer++
 				}
 
 				if (pickRadio[j].checked && pickLabel[j].innerHTML!=fragenkatalog[i].correctAnswer) {
@@ -185,8 +215,69 @@ document.getElementById("sumbit").onclick=function() {
 					document.getElementById(pickLabel[j].id).style.color="white";
 				}
 			}
+		}
+
+		var newElement = document.createElement("div");
+
+		newElement.setAttribute("class", "frame-text");
+
+		var ratingHeadline = document.createElement("h3");
+
+		var ratingHeadlineText = document.createTextNode("Deine Punktzahl");
+
+		ratingHeadline.appendChild(ratingHeadlineText);
+
+		var ratingPoints = document.createElement("p")
+
+		var ratingText = document.createTextNode(counterAnswer + "/" + fragenkatalog.length)
+
+		ratingPoints.appendChild(ratingText);
+
+		newElement.appendChild(ratingHeadline);
+
+		newElement.appendChild(ratingPoints);
+
+
+		var evaluation = document.createElement("p")
+
+		var badEvaluation = document.createTextNode("Wer bist du und warum hörst du Esthi nie zu?")
+
+		var mediumEvaluation = document.createTextNode("Gut geraten ist halb gewonnen. Würdest du mehr zuhören, hättest du mehr Punkte.")
+
+		var highEvaluation = document.createTextNode("Das war nicht schlecht! Hast du wohl doch hin und wieder zugehört.")
+
+		var bestEvaluation = document.createTextNode("Volle Punktzahl!! Du bist ein wahrer Esthi-Kenner.")
+
+
+		if (counterAnswer < 4) {
+
+			evaluation.appendChild(badEvaluation);
 
 		}
+
+		if (counterAnswer > 3 && counterAnswer < 7) {
+
+			evaluation.appendChild(mediumEvaluation);
+
+		}
+
+		if (counterAnswer > 6 && counterAnswer < 10) {
+
+			evaluation.appendChild(highEvaluation);
+
+		}
+
+		if (counterAnswer == 10) {
+
+			evaluation.appendChild(bestEvaluation);
+
+		}
+
+		newElement.appendChild(evaluation);
+
+		document.body.insertBefore(newElement, document.getElementById("space"));
+
+
 	}
 }
 
